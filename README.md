@@ -37,13 +37,13 @@ If no query is provided, you can enter the pseudo-shell interface to run command
 To simplify running the tool, you can set up a bash or zsh alias:
 
 ```bash
-alias searchvector="<path_to_searchvector.py> $*"
+alias searchvector="/opt/searchvector/searchvector.py $*"
 ```
 
 Replace `<path_to_searchvector.py>` with the actual path to the `searchvector.py` script. For example, if the script is located in your projects directory, you could use:
 
 ```bash
-alias searchvector="/home/kali/projects/searchvector/searchvector.py $*"
+alias searchvector="/opt/searchvector/searchvector.py $*"
 ```
 
 After adding this alias, you can use the `searchvector` command directly in your terminal:
@@ -64,7 +64,7 @@ searchvector kerberoasting
 ## Example Usage
 
 ```bash
-kali@kali:~/projects/searchvector$ python3 searchvector.py kerberoasting
+kali@kali:~/opt/searchvector$ python3 searchvector.py kerberoasting
 searchvector:> Found 5 result(s):
 1. /home/kali/hacktricks/windows-hardening/active-directory-methodology/README.md
 2. /home/kali/hacktricks/windows-hardening/active-directory-methodology/kerberoast.md
