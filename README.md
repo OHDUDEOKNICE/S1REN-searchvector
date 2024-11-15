@@ -1,5 +1,7 @@
 # 🚀 SearchVector
 
+!THIS TOOL IS A WORK IN PROGRESS!
+
 SearchVector is a command-line tool that lets you search HackTricks for relevant articles with ease. It integrates synonym matching and features fuzzy search, making it similar to `searchsploit` but optimized for HackTricks content.
 
 Developed to be learned alongside S1REN at [Learn.Startup.Security](https://Learn.Startup.Security:443/), but can be used anywhere for quick and effective searches.
@@ -9,6 +11,8 @@ Developed to be learned alongside S1REN at [Learn.Startup.Security](https://Lear
 - 📋 Displays text, commands, or links based on your preference.
 - ⬆️⬇️ Command history navigation.
 - 🌐 Opens article links in your browser.
+
+![Screenshot 1](1.gif)
 
 ## ⚙️ Installation & Usage
 ```sh
