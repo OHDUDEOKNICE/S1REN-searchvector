@@ -12,8 +12,6 @@ Developed to be learned alongside S1REN at [Learn.Startup.Security](https://Lear
 - ⬆️⬇️ Command history navigation.
 - 🌐 Opens article links in your browser.
 
-![Screenshot 1](1.gif)
-
 ## ⚙️ Installation & Usage
 ```sh
 git clone https://github.com/OHDUDEOKNICE/S1REN-searchvector.git
