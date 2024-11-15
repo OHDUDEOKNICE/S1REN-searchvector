@@ -1,6 +1,10 @@
 # 🚀 SearchVector
 
+<<<<<<< HEAD
 !THIS TOOL IS A WORK IN PROGRESS!
+=======
+!THIS PROJECT IS UNDER CONTSTRUCTION!
+>>>>>>> cb7bd0a65b13b190d9b4fa7679d9e3a525c6ada5
 
 SearchVector is a command-line tool that lets you search HackTricks for relevant articles with ease. It integrates synonym matching and features fuzzy search, making it similar to `searchsploit` but optimized for HackTricks content.
 
