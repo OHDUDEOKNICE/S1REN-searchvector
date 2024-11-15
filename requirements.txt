@@ -1,2 +1,3 @@
 rich
 rapidfuzz
+prompt_toolkit
