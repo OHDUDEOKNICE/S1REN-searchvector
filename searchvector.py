@@ -46,7 +46,9 @@ SYNONYMS = {
 HELP_TEXT = """
 Commands available:
   search <query>    - Search the HackTricks repository for a given query (supports synonyms)
-  use <index> [show <text|commands|links>] [search <keyword>] - View a file's content, optionally showing only text, commands, or links or searching within the file
+  use <index|module_name> [show <text|commands|links>] [search <keyword>] 
+                     - View a file's content by index or module name, optionally showing only text, commands, or links, 
+                       or searching within the file.
   select <index>    - Alias for 'use', behaves identically
   read <link_index> - Open a link found in the article
   back              - Go back to the initial prompt to perform another action
@@ -54,6 +56,7 @@ Commands available:
   help              - Display this help message
   exit, quit, q     - Exit the pseudo-shell
 """
+
 
 console = Console()
 
