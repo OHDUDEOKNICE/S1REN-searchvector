@@ -281,6 +281,7 @@ def display_article(file_path, content_type="all", keyword=None):
     except Exception as e:
         console.print(f"[red]Error reading file {file_path}: {e}[/red]")
 
+
 def clean_up_links(raw_links):
     """
     Clean up the extracted links to ensure they are unique, properly formatted,
