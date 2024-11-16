@@ -118,6 +118,11 @@ searchvector:> use 3 search privilege escalation
 searchvector:> read 1
 ```
 
+### Go back at any time.
+```bash
+searchvector (hacktricks/windows-hardening/active-directory-methodology/acl-persistence-abuse/README):>
+Cleared current search results. You can perform a new search.
+searchvector:>
 ---
 
 ## 📄 License
