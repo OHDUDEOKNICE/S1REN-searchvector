@@ -1,4 +1,4 @@
-# 🚀 SearchVector
+# 🚀 SearchVector (SEARCH ATTACK VECTOR)
 
 SearchVector is a command-line tool that lets you search HackTricks for relevant articles with ease. It integrates synonym matching and features fuzzy search, making it similar to `searchsploit` but optimized for HackTricks content.
 
