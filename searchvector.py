@@ -40,6 +40,7 @@ SYNONYMS = {
     "shell": ["reverse shell", "bind shell"],
     "privilege escalation": ["priv esc", "privesc"],
     "directory traversal": ["path traversal", "dot-dot-slash attack"],
+
 }
 
 HELP_TEXT = """
@@ -334,7 +335,7 @@ def handle_search_command(command_parts, hacktricks_dir):
 def handle_use_command(command_parts, search_results):
     if len(command_parts) < 2:
         console.print("[red]Error: 'use' command requires an index number.[/red]")
-        return [], []
+        return [], [], None
 
     try:
         params = command_parts[1].split()
@@ -348,15 +349,17 @@ def handle_use_command(command_parts, search_results):
                 content_type = params[i + 1].strip().lower()
                 if content_type not in ["text", "commands", "links"]:
                     console.print(f"[red]Invalid content type '{content_type}'. Valid options are: text, commands, links.[/red]")
-                    return search_results, []
+                    return search_results, [], None
             elif params[i] == "search" and i + 1 < len(params):
                 keyword = params[i + 1].strip()
 
         if 0 <= idx < len(search_results):
+            file_path = search_results[idx]['path']
+            module_path = os.path.relpath(file_path, os.path.expanduser("~")).replace(".md", "")
             console.clear()
             console.print(f"searchvector:> use {command_parts[1]}")
-            display_article(search_results[idx]['path'], content_type, keyword)
-            return search_results, []
+            display_article(file_path, content_type, keyword)
+            return search_results, [], module_path
 
         else:
             console.print("[red]Invalid index. Please select a valid number from the search results.[/red]")
@@ -364,7 +367,8 @@ def handle_use_command(command_parts, search_results):
     except ValueError:
         console.print("[red]Please provide a valid number after the command.[/red]")
 
-    return search_results, []
+    return search_results, [], None
+
 
 def handle_read_command(command_parts, links):
     if len(command_parts) < 2:
@@ -409,10 +413,14 @@ def main():
         else:
             console.print("[yellow]No results found.[/yellow]")
 
-    # Start the interactive shell
+# Start the interactive shell
     while True:
         try:
-            command = prompt("searchvector:> ", history=history, style=style).strip()
+            prompt_prefix = f"searchvector:> "
+            if 'module_path' in locals() and module_path:
+                prompt_prefix = f"searchvector ({module_path}):> "
+
+            command = prompt(prompt_prefix, history=history, style=style).strip()
             if not command:
                 continue
 
@@ -426,7 +434,7 @@ def main():
                 if not search_results:
                     console.print("[yellow]No search results available. Please perform a search first.[/yellow]")
                 else:
-                    search_results, links = handle_use_command(parts, search_results)
+                    search_results, links, module_path = handle_use_command(parts, search_results)
 
             elif action == "read":
                 if not links:
@@ -437,6 +445,7 @@ def main():
             elif action == "back":
                 search_results = []
                 links = []
+                module_path = None
                 console.print("Cleared current search results. You can perform a new search.")
 
             elif action in ["help", "?"]:
@@ -456,7 +465,7 @@ def main():
                     try:
                         idx = int(command) - 1
                         if 0 <= idx < len(search_results):
-                            search_results, links = handle_use_command(["use", command], search_results)
+                            search_results, links, module_path = handle_use_command(["use", command], search_results)
                         else:
                             console.print("[red]Invalid index. Please select a valid number from the search results.[/red]")
                     except ValueError:
@@ -468,6 +477,7 @@ def main():
         except KeyboardInterrupt:
             console.print("\n[red]Exiting searchvector.[/red]")
             break
+
 
 if __name__ == "__main__":
     try:
