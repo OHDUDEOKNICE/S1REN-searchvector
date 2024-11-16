@@ -14,9 +14,9 @@ Developed to be learned alongside S1REN at [Learn.Startup.Security](https://Lear
 
 ## ⚙️ Installation & Usage
 
-### Option 1: Install from PyPI
+### Option 1: Install from GitHub
 ```sh
-pip install searchv
+pip install git+https://github.com/OHDUDEOKNICE/S1REN-searchvector
 ```
 
 For interactive mode, simply run:
