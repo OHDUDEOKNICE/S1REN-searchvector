@@ -242,7 +242,7 @@ def display_article(file_path, content_type="all", keyword=None):
                     for match in matches:
                         if "```" in match:  # If it's a code block, render with Syntax
                             code_content = re.search(r'```(.*?)```', match, re.DOTALL).group(1)
-                            syntax = Syntax(code_content.strip(), "bash", theme="monokai", line_numbers=True)
+                            syntax = Syntax(code_content.strip(), "bash", theme="monokai", line_numbers=False)
                             console.print(syntax)
                         else:
                             console.print(match)
@@ -254,7 +254,7 @@ def display_article(file_path, content_type="all", keyword=None):
                 # Extract and display code blocks only
                 code_blocks = re.findall(CODE_BLOCK_PATTERN, content, re.DOTALL)
                 for idx, code in enumerate(code_blocks, start=1):
-                    syntax = Syntax(code.strip(), "bash", theme="monokai", line_numbers=True)
+                    syntax = Syntax(code.strip(), "bash", theme="monokai", line_numbers=False)
                     console.print(f"[bold cyan]Code Block {idx}:[/bold cyan]")
                     console.print(syntax)
 
@@ -280,6 +280,7 @@ def display_article(file_path, content_type="all", keyword=None):
 
     except Exception as e:
         console.print(f"[red]Error reading file {file_path}: {e}[/red]")
+
 
 def clean_up_links(raw_links):
     """
