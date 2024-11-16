@@ -13,11 +13,10 @@ Developed to be learned alongside S1REN at [Learn.Startup.Security](https://Lear
 - 🌐 Opens article links in your browser.
 
 ## ⚙️ Installation & Usage
+
+### Option 1: Install from PyPI
 ```sh
-git clone https://github.com/OHDUDEOKNICE/S1REN-searchvector.git
-cd S1REN-searchvector
-pip install -r requirements.txt
-./searchvector.py <search term>
+pip install searchv
 ```
 
 For interactive mode, simply run:

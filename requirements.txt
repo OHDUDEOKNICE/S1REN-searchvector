@@ -1,3 +1,8 @@
-rich
-rapidfuzz
-prompt_toolkit
+rich>=13.0.0
+rapidfuzz>=3.0.0
+prompt_toolkit>=3.0.0
+gitpython>=3.1.0
+markdown>=3.0.0
+pygments>=2.0.0
+readline>=8.0.0
+webbrowser>=1.0.0
