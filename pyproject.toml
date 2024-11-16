@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "searchvector"
+version = "0.1.0"
+authors = [
+    { name = "OHDUDEOKNICE", email = "" },
+]
+description = "A command-line tool to search HackTricks content with fuzzy search and synonym matching"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "rich>=13.0.0",
+    "rapidfuzz>=3.0.0",
+    "prompt_toolkit>=3.0.0",
+    "gitpython>=3.1.0",
+    "markdown>=3.0.0",
+    "pygments>=2.0.0"
+]
+
+[project.scripts]
+searchvector = "searchvector.main:main"
+
+[project.urls]
+"Homepage" = "https://github.com/OHDUDEOKNICE/S1REN-searchvector"
+"Bug Tracker" = "https://github.com/OHDUDEOKNICE/S1REN-searchvector/issues" 
