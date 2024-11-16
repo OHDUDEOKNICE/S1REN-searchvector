@@ -228,35 +228,26 @@ def extract_paragraph_and_code_block(content, keyword):
     return matches
 
 def display_article(file_path, content_type="all", keyword=None):
+    """
+    Display the content of a selected file based on the specified content type.
+    Modified to extract and display only code blocks for 'commands' content type.
+    """
     relative_path = os.path.relpath(file_path, os.path.expanduser("~"))
     console.rule(f"[bold blue]Content of {relative_path}[/bold blue]")
     try:
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
 
-            if keyword:
-                # Extract paragraphs and code blocks related to the keyword
-                matches = extract_paragraph_and_code_block(content, keyword)
-                if matches:
-                    console.print(f"[bold magenta]Showing occurrences of '{keyword}':[/bold magenta]\n")
-                    for match in matches:
-                        if "```" in match:  # If it's a code block, render with Syntax
-                            code_content = re.search(r'```(.*?)```', match, re.DOTALL).group(1)
-                            syntax = Syntax(code_content.strip(), "bash", theme="monokai", line_numbers=False)
-                            console.print(syntax)
-                        else:
-                            console.print(match)
-                else:
-                    console.print(f"[yellow]No occurrences of '{keyword}' found in this article.[/yellow]")
-                return
-
             if content_type == "commands":
-                # Extract and display code blocks only
+                # Extract all code blocks using the regex
                 code_blocks = re.findall(CODE_BLOCK_PATTERN, content, re.DOTALL)
-                for idx, code in enumerate(code_blocks, start=1):
-                    syntax = Syntax(code.strip(), "bash", theme="monokai", line_numbers=False)
-                    console.print(f"[bold cyan]Code Block {idx}:[/bold cyan]")
-                    console.print(syntax)
+                if code_blocks:
+                    for idx, code in enumerate(code_blocks, start=1):
+                        syntax = Syntax(code.strip(), "bash", theme="monokai", line_numbers=False)
+                        console.print(f"[bold cyan]Code Block {idx}:[/bold cyan]")
+                        console.print(syntax)
+                else:
+                    console.print("[yellow]No code blocks found in this module.[/yellow]")
 
             elif content_type == "text":
                 # Remove code blocks and display text only
